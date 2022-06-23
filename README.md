@@ -1,57 +1,7 @@
-# Project Name
+# MetricsAdvisorSample
+This repository hosts the sample data and script to quickly compose a demo and showcase the core capabilities of Azure Metrics Advisor service. 
 
-(short, 1-3 sentenced, description of the project)
-
-## Features
-
-This project framework provides the following features:
-
-* Feature 1
-* Feature 2
-* ...
-
-## Getting Started
-
-### Prerequisites
-
-(ideally very short, if any)
-
-- OS
-- Library version
-- ...
-
-### Installation
-
-(ideally very short)
-
-- npm install [package name]
-- mvn install
-- ...
-
-### Quickstart
-(Add steps to get up and running quickly)
-
-1. git clone [repository clone url]
-2. cd [repository name]
-3. ...
-
-
-## Demo
-
-A demo app is included to show how to use the project.
-
-To run the demo, follow these steps:
-
-(Add steps to start up the demo)
-
-1.
-2.
-3.
-
-## Resources
-
-(Any additional resources or related projects)
-
-- Link to supporting information
-- Link to similar sample
-- ...
+With this you can get:
+1. A set of sample data that showcase the capabilities of Azure Metrics Advisor
+2. Go through the key steps for ramping up the service and understanding core capabities
+3. Get a scenario-focused demo story targeting AIOps for business/service and use it as a starting point to deal with real business problems
