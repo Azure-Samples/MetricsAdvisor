@@ -15,7 +15,7 @@ Create a Azure Metrics Advisor resource in [Azure portal](https://ms.portal.azur
 During this period, you can get back to this repository and move to step 2 to prepare the sample data. 
 
 # 2. Prepare sample data
-Download the sample data [here](/Methane%20Emission%20Detection/MASample_Methane.csv). This sample data contains 2 variables, *methane concentration* and *temperature*, which are from *device A* and *device B*. After the CSV file is downloaded, you should ingest the data into a database. Here we use Azure Data Explorer as an example.
+Download the sample data [here](/Methane%20Emission%20Detection/sample.csv). This sample data contains 2 variables, *methane concentration* and *temperature*, which are from *device A* and *device B*. After the CSV file is downloaded, you should ingest the data into a database. Here we use Azure Data Explorer as an example.
 
 Go to Azure Data Explorer(ADX) and select **Data** to the left to upload the CSV file.
 
