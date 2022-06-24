@@ -35,12 +35,16 @@ To run this script, use the following command:
 ```bash
 nohup python stream2metricsadvisor.py --csv_file=<path_to .csv> --container_name=<container_name> --minute_resample=5 > nohup.out 2>&1 &
 ```
+Where `<path_to .csv>` points to your CSV file, and `<container_name>` is the name of the storage container in your storage account where all the messages will be uploaded.
 
-To monitor the progress of the script, use the following command:
-$ tail -f nohup.out
-To kill the script, use the following command:
-$ kill <pid>
-"""
+After you run the script, you can monitor its progress using the following command:
+```bash
+tail -f nohup.out
+```
+Finally, if you like to stop this script, you can kill the process running it use the following command:
+kill <pid>
+```
+Where `<pid>` is the process id. 
 
 ### Step 5 -- Create a data feed in Metrics Advisor
 
