@@ -2,8 +2,6 @@
 #
 # Copyright (c) Microsoft Corporation. All rights reserved.
 #
-# Licensed under Microsoft Incubation License Agreement:
-#
 # -------------------------------------------------------------
 
 import argparse
@@ -14,8 +12,6 @@ import time
 import pandas as pd
 from azure.core.exceptions import ResourceExistsError
 from azure.storage.blob import BlobServiceClient
-
-
 
 
 def main(args):
@@ -46,18 +42,19 @@ def main(args):
 
     print("******* PROCESSING THE DATA FRAME *******")
 
+    # Select the columns we want to use
     df = df[
         [
             "timestamp",
-            "device",
-            "methane",
-            "wind_speed_resultant",
+            "methane_concentration",
+            "wind_speed",
             "wind_direction",
             "temperature",
+            "device",
         ]
     ]
 
-    print("Number of devices: " + str(len(df[["device"]].drop_duplicates())))
+    print("Number of devices: " + str(len(df["device"].unique())))
 
     df["timestamp"] = pd.to_datetime(df["timestamp"])
     dft = df.set_index(["device", "timestamp"])
@@ -75,7 +72,7 @@ def main(args):
 
     # Format the timestamp column to ISO 8601:
     dft.index = dft.index.map(
-        lambda x: datetime.strptime(str(x), "%Y-%m-%d %H:%M:%S+00:00").isoformat() + "Z"
+        lambda x: datetime.strptime(str(x), "%Y-%m-%d %H:%M:%S").isoformat() + "Z"
     )
 
     print("******* ENTERING THE MAIN LOOP *******")
@@ -89,7 +86,7 @@ def main(args):
         timestamp = timestamps[idx % len(timestamps)]
         row = dft.loc[timestamp]
         row = row.reset_index(drop=False)
-        # get a new timestamp:
+        # get a new fake timestamp:
         now = datetime.now().replace(microsecond=0, second=0)
         # round the minutes down to the closest minute that matches the minute_resample rate
         now = now.replace(
