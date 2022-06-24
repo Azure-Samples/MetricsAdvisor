@@ -1,18 +1,3 @@
-# Introduction
-This tutorial will help you create a Metrics Advisor resource and use the sample data to set up anomaly detection pipeline in Metrics Advisor step by step. Let's go!
-
-# 0. Resources
-
-👉 Join our community: https://aka.ms/AnomalyDetector/Advisors
-
-🔗 Metrics Advisor Workspace: https://metricsadvisor.azurewebsites.net/
-
-📑 Metrics Advisor documentation: https://aka.ms/madoc
-
-# 1. Create a Metrics Advisor resource
-Create a Azure Metrics Advisor resource in [Azure portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesMetricsAdvisor). It may take about 20mins to create the resource successfully. 
-
-During this period, you can get back to this repository and move to step 2 to prepare the sample data. 
 
 # 2. Prepare sample data
 Download the sample data [here](/Methane%20Emission%20Detection/sample.csv). This sample data contains 2 variables, *methane concentration* and *temperature*, which are from *device A* and *device B*. After the CSV file is downloaded, you should ingest the data into a database. Here we use Azure Data Explorer as an example.
