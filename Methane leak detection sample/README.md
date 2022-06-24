@@ -6,11 +6,11 @@ Metrics Advisor is designed for streaming data scenarios. This tutorial will hel
 # Getting Started
 
 ## Step 1 - Create a Metrics Advisor resource
-To get started, you need to create an Azure Metrics Advisor resource in your Azure resource group. To set up Metrics Advisor resource, navigate to your resource group in the [Azure portal](https://ms.portal.azure.com/), click `Create` to add a new resource, then select `Metrics Advisor`. Make sure the details are accurate, then create the resource. You can move to the next step while the resource is being created.
+To get started, you need to create an Azure Metrics Advisor resource in your Azure resource group. To set up a Metrics Advisor resource, navigate to your resource group in the [Azure portal](https://ms.portal.azure.com/), click `Create` to add a new resource, then select `Metrics Advisor`. Make sure the details are accurate, then create the resource. You can move to the next step while the resource is being created.
 
 ## Step 2 - Create a Blob Storage account
 
-Next, you will need to add a storage account in your resource group to store the incoming messages. Within your resource group in the Azure portal, click `Create` and type `Storage account`. Make sure that the storage account is in the same region as your Metrics Advisor resource, and then click on `Review and create`. Next, navigate to your new storage account, click on the containers link on the left, and create a new storage container by clicking the `+ Container` and give it a name, and then click `Create`.
+Next, you will need to add a storage account in your resource group to store the incoming messages. Within your resource group in the Azure portal, click `Create` and type `Storage account`. Make sure that the storage account is in the same region as your Metrics Advisor resource, and then click on `Review and create`. Next, navigate to your new storage account, click on the containers link on the left, and create a new storage container by clicking the `+ Container` and giving it a name, and then click `Create`.
 
 ## Step 3 - Creating the virtual environment and installing the dependencies
 
@@ -20,14 +20,14 @@ y | conda create --name metrics-advisor python=3.7
 source activate metrics-advisor
 pip install -r requirements.txt
 ```
-Next, enter the following line in your terminal, replacing `<your-blob-connection-string>` with the blob connection string for your Azure blob storage account that you just created. You can find your connection string by navigating to your storage account in the Azure portal, and copying the `Connection string` from the "Access keys" section of the resource details.
+Next, enter the following line in your terminal, replacing `<your-blob-connection-string>` with the blob connection string for your Azure blob storage account that you just created. You can find your connection string by navigating to your storage account in the Azure portal and copying the `Connection string` from the "Access keys" section of the resource details.
 ```bash
 export BLOB_CONNECTION_STRING="<your-blob-connection-string>"
 ```
 
 ## Step 4 - Run the script to stream data into Azure blob storage
 
-The [stream2metricsadvisor.py](stream2metricsadvisor.py) script helps simulate streaming data into Azure Blob Storage (and therefore, Azure Metrics Advisor as well) in the absense of real sensor data streaming into your data store. This script accepts a CSV file and continuously loops over the data, processing the data from each timestamp at regular intervals, and pushes this data to blob storage. Once the data is in blob storage, you can use the [Azure Metrics Advisor web UI](https://metricsadvisor.azurewebsites.net) to create a data feed to ingest this streaming data and perform anomaly detection.
+The [stream2metricsadvisor.py](stream2metricsadvisor.py) script helps simulate streaming data into Azure Blob Storage (and therefore, Azure Metrics Advisor as well) in the absence of real sensor data streaming into your data store. This script accepts a CSV file and continuously loops over the data, processing the data from each timestamp at regular intervals, and pushing this data to blob storage. Once the data is in blob storage, you can use the [Azure Metrics Advisor web UI](https://metricsadvisor.azurewebsites.net) to create a data feed to ingest this streaming data and perform anomaly detection.
 
 Please refer to the docstring inside the script for more details. You can use your own data instead of the sample CSV that we provide, but please modify the script if your data schema doesn't match the one we use.
 
@@ -35,13 +35,13 @@ To run this script, use the following command:
 ```bash
 nohup python stream2metricsadvisor.py --csv_file=<path_to .csv> --container_name=<container_name> --minute_resample=5 > nohup.out 2>&1 &
 ```
-Where `<path_to .csv>` points to your CSV file, and `<container_name>` is the name of the storage container you created in Step 2. When you enter the command above, the process will run the in background, and you will see the process id printed in the terminal. You can use the `ps` command to check the status of the process.
+Where `<path_to .csv>` points to your CSV file, and `<container_name>` is the name of the storage container you created in Step 2. When you enter the command above, the process will run in the background, and you will see the process id printed in the terminal. You can use the `ps` command to check the status of the process.
 
 After you run the script, you can monitor its progress using the following command:
 ```bash
 tail -f nohup.out
 ```
-You can also check your sotrage container for a new JSON message to verify the script is running successfully. A new message will be uploaded every 5 minutes.
+You can also check your storage container for a new JSON message to verify the script is running successfully. A new message will be uploaded every 5 minutes.
 
 ![](../media/methane_messages_in_blob.png)
 
@@ -60,7 +60,7 @@ Next, select `Basic` as your authentication type, paste your connection string i
 ```
 %Y/%m/%d/%Y-%m-%d-%h-%M.json
 ```
-And type `v2` in the `JSON format version` field. The click `Load data`.
+And type `v2` in the `JSON format version` field. Then click `Load data`.
 
 ![onboard_data](../media/methane_create_datafeed.png)
 
@@ -72,25 +72,25 @@ Finally, click `Verify schema`, give the datafeed a name, and click `Submit`.
 
 ## Step 6 - Configure your anomaly detection and alerting settings
 
-Now that the data feed is created, we can create an optional alert hook if we want to receive alerts. To do so, click `Hooks` in the left navigation menu, and click `Create hook`.  You then follow the instructions in this [documentation page](https://docs.microsoft.com/en-us/azure/applied-ai-services/metrics-advisor/how-tos/alerts).
+Now that the data feed is created, we can create an optional alert hook if we want to receive alerts. To do so, click `Hooks` in the left navigation menu, and click `Create hook`.  You then follow the instructions on this [documentation page](https://docs.microsoft.com/en-us/azure/applied-ai-services/metrics-advisor/how-tos/alerts).
 
 ![setup_hooks](../media/methane_hook_setup.png)
 
-Now, let's click on the datafeed we have just created in the `Data feeds` section. We can click on one of the metrics like *methane_concentration* to see the ingested data so far, and set up an anomaly detection configuration. Please review this [documentation page](https://docs.microsoft.com/en-us/azure/applied-ai-services/metrics-advisor/how-tos/configure-metrics#tune-the-detection-configuration) for more details.
+Now, let's click on the datafeed we have just created in the `Data feeds` section. We can click on one of the metrics like *methane_concentration* to see the ingested data so far and set up an anomaly detection configuration. Please review this [documentation page](https://docs.microsoft.com/en-us/azure/applied-ai-services/metrics-advisor/how-tos/configure-metrics#tune-the-detection-configuration) for more details.
 
 ![detect anomalies](../media/methane-anomaly-detection.png)
 
 ## Step 7 - Check the detected anomalies in Incident Hub
 
-Once we have an anomaly detection configuration set up, we can explore the anomalies that have been detected viewing the **incidents** tab:
+Once we have an anomaly detection configuration set up, we can explore the anomalies that have been detected by viewing the **incidents** tab:
 
 ![incident](../media/methane_incident.png)
 
-When you click one of the incident, you'll be led to **Incident Hub**, which allows you to see an overview of all the latest detected anomalies in real-time and see their severity scores. It also allows you to diagnose and analyze the root cause of each incident.
+When you click one of the incidents, you'll be led to **Incident Hub**, which allows you to see an overview of all the latest detected anomalies in real-time and see their severity scores. It also allows you to diagnose and analyze the root cause of each incident.
 
 ![incident_hub](../media/methane_incident_hub.png)
 
-If you click one incident in the **Incident list**, you could see more detail of a specific incident.
+If you click one incident in the **Incident list**, you can see more detail about a specific incident.
 
 ![incident_detail](../media/methane_incident_details.png)
 
@@ -108,4 +108,3 @@ Now that you know your way around Metrics Advisor, you can explore the different
 🔗 Metrics Advisor Workspace: [https://metricsadvisor.azurewebsites.net/](https://metricsadvisor.azurewebsites.net/)
 
 📑 Metrics Advisor documentation: [https://aka.ms/madoc](https://metricsadvisor.azurewebsites.net/)
-
