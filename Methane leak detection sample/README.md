@@ -49,11 +49,11 @@ If you like to stop this script after you are finished with this tutorial, you c
 
 Choose **Add data feed** and start to onboard the data to Metrics Advisor, choose the settings and write down your own connection string and query.
 
-![onboard_data](/media/methane_create_datafeed.png)
+![onboard_data](../media/methane_create_datafeed.png)
 
 After you click **Load data**, you should choose the data schema same as below.
 
-![choose_schema](/media/data_onboarding_configuration.png)
+![choose_schema](../media/data_onboarding_configuration.png)
 
 ### Step 6 - Configure your anomaly detection and alerting settings
 
@@ -61,25 +61,25 @@ After you onboard the data, wait for some time of data ingestion into Metrics Ad
 
 During that time, you could go to the **Hooks** in Metrics Advisor to set up an alert which could go to your teams, email, webhook, etc. based on your preference.
 
-![setup_hooks](/media/methane_hook_setup.png)
+![setup_hooks](../media/methane_hook_setup.png)
 
 Now, you could go to one of the metrics like *methane concentration* to see the detection results. You could also set some different detection method in the **Metric-level configuration** on the left.
 
-![detect anomalies](/media/methane-anomaly-detection.png)
+![detect anomalies](../media/methane-anomaly-detection.png)
 
 ### Step 7 - Check the detected anomalies in Incident Hub
 
 For the anomalies that have been detected, you could check the details behind this anomaly through the **incident** in your metric page.
 
-![incident](/media/methane_incident.png)
+![incident](../media/methane_incident.png)
 
 When you click one of the incident, you'll be led to **Incident Hub**, which is a place that allows you to see an overview of all the latest detected anomalies in real-time and see their severity scores. It also allows you to diagnose and analyze the root cause of each incident.
 
-![incident_hub](/media/methane_incident_hub.png)
+![incident_hub](../media/methane_incident_hub.png)
 
 If you click one incident in the **Incident list** down below, you could see the more detail of a specific incident.
 
-![incident_detail](/media/methane_incident_details.png)
+![incident_detail](../media/methane_incident_details.png)
 
 
 
