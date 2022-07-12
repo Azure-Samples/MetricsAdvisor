@@ -1,4 +1,4 @@
-﻿timestamp,methane concentration,wind speed resultant,wind direction,temperature,device
+﻿timestamp,methane_concentration,wind_speed,wind_direction,temperature,device
 2022-2-8 00:00,0.0247,2.49387566,303.79,38.1,device_A
 2022-2-8 01:00,0.0214,2.507,304.09,38.247,device_A
 2022-2-8 02:00,0.0254,2.475,304.39,38.323,device_A

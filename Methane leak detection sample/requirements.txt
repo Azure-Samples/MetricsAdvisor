@@ -1,0 +1,5 @@
+azure-core==1.24.1
+azure-storage-blob
+black
+numpy
+pandas
